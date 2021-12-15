@@ -1,4 +1,17 @@
 {
   "private": true,
-  "workspaces": ["portfolio-andin"]
+  "workspaces": {
+    "packages": [
+      "./portfolio-andin/site",
+      "./shared"
+    ],
+    "nohoist": [
+      "**/tailwindcss",
+      "**/@tailwindcss/**",
+      "**/tailwindcss-filters"
+    ]
+  },
+  "devDependencies": {
+    "stylelint-config-standard": "^22.0.0"
+  }
 }
