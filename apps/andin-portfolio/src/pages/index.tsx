@@ -60,6 +60,10 @@ const Home: FC<{
             I build <span className="text-[#006D77] hover:underline underline-offset-4 hover:cursor-default">solutions</span> to your <span className="text-[#E29578] hover:underline underline-offset-4 hover:cursor-default">problems</span>
           </p>
         </div>
+        
+          {/* <div className="z-10 h-28 border-2 border-[#EDF6F9] md:h-36 aspect-square rounded-full bg-[#EDF6F9] bg-opacity-10 backdrop-blur-lg overflow-hidden mr-12">
+            <Image width={250} height={250} layout="responsive" className="object-contain object-top" src="/img/blol-look-left.png" alt="" />
+          </div> */}
       </section>
 
      <MainSection me={me} />
@@ -81,9 +85,6 @@ const MainSection: FC<{
           <div className='aspect-square h-4 rounded-full bg-[#63FF55]'></div>
         </div>
         <div className="overflow-y-scroll grid grid-flow-row  rounded-lg p-8">
-          <div className="z-10 fixed bottom-12 right-0 h-28 border-2 border-[#EDF6F9] md:h-36 aspect-square rounded-full bg-[#EDF6F9] bg-opacity-10 backdrop-blur-lg overflow-hidden mr-12">
-            <Image width={250} height={250} layout="responsive" className="object-contain object-top" src="/img/blol-look-left.png" alt="" />
-          </div>
           <div className="z-0 flex flex-col">
             <SubSectionTitle text="skills"/>
             <div className="w-full py-12 grid auto-rows-fr grid-cols-2 md:grid-cols-3 gap-4">
