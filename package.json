@@ -1,17 +1,24 @@
 {
+  "name": "andin-monorepo",
+  "version": "0.0.0",
   "private": true,
-  "workspaces": {
-    "packages": [
-      "./portfolio-andin/site",
-      "./shared"
-    ],
-    "nohoist": [
-      "**/tailwindcss",
-      "**/@tailwindcss/**",
-      "**/tailwindcss-filters"
-    ]
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev --parallel",
+    "lint": "turbo run lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
-    "stylelint-config-standard": "^22.0.0"
-  }
+    "prettier": "^2.5.1",
+    "turbo": "latest"
+  },
+  "engines": {
+    "npm": ">=7.0.0",
+    "node": ">=14.0.0"
+  },
+  "packageManager": "yarn@1.22.5"
 }
