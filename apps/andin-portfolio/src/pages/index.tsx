@@ -50,13 +50,13 @@ const Home: FC<{
   me: AboutMe
 }> = ({ me }) => {
   return (
-    <div className="snap-mandatory snap-y scroll-smooth bg-hero bg-fixed bg-auto bg-s bg-center">
+    <div className="snap-mandatory snap-y scroll-smooth bg-hero bg-fixed bg-cover bg-center">
       <section className="snap-center h-[80vh] flex flex-col place-content-center pl-8 md:pl-24">
         <div className="translate-y-20">
-          <p className="font-poppins font-bold text-7xl">
+          <p className="font-poppins font-bold text-6xl md:text-7xl">
             Andin Farrel
           </p>
-          <p className="font-raleway font-semibold text-3xl">
+          <p className="font-raleway font-semibold text-2xl lg:text-3xl">
             I build <span className="text-[#006D77] hover:underline underline-offset-4 hover:cursor-default">solutions</span> to your <span className="text-[#E29578] hover:underline underline-offset-4 hover:cursor-default">problems</span>
           </p>
         </div>
