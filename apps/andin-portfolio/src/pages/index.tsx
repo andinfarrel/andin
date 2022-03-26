@@ -8,8 +8,11 @@ import { airtable, getMinifiedRecords } from 'app/services/airtable'
 import { GetServerSideProps } from 'next'
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  const titlesTable = airtable('Titles');
-  const projectsTable = airtable('Projects');
+  ctx.res.setHeader(
+    'Cache-Control',
+    'public, s-maxage=10, stale-while-revalidate=59'
+  )
+
   const skillsTable = airtable('Skills');
   const techsTable = airtable('Techs');
   const interestsTable = airtable('Interests');
@@ -60,9 +63,6 @@ const Home: FC<{
       </section>
 
      <MainSection me={me} />
-     <section className="min-h-screen">
-
-     </section>
     </div>
   )
 }
