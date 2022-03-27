@@ -38,14 +38,14 @@ const Home: FC<{
   me: AboutMe
 }> = ({ me }) => {
   return (
-    <div className="min-h-screen bg-hero bg-fixed bg-top bg-no-repeat">
+    <div className="min-h-screen">
       <section className="h-[80vh] flex flex-col place-content-center pl-8 md:pl-24">
         <div className="translate-y-20">
           <p className="font-poppins font-bold text-6xl md:text-7xl">
             Andin Farrel
           </p>
           <p className="font-raleway font-semibold text-2xl lg:text-3xl">
-            I build <span className="text-[#006D77] hover:underline underline-offset-4 hover:cursor-default">solutions</span> to your <span className="text-[#E29578] hover:underline underline-offset-4 hover:cursor-default">problems</span>
+            I build <span className="text-[#006D77] hover:underline underline-offset-4 hover:cursor-default">solutions</span> to your <span className="hover:underline underline-offset-4 hover:cursor-default text-red-600">problems</span>
           </p>
         </div>
       </section>
