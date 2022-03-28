@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import { FC, useState } from 'react'
+import { FC, MouseEventHandler, useRef, useState } from 'react'
 import clsx from 'clsx'
 import { airtable, getMinifiedRecords } from 'app/services/airtable'
 import { GetStaticProps } from 'next'
@@ -74,7 +74,7 @@ const MainSection: FC<{
   me
 }) => {
   return (
-    <section className="h-screen p-8 py-12 md:p-12 md:px-16 lg:p-16 lg:px-24 dark:text-gray-700">
+    <section className="scroll-smooth h-screen p-8 py-12 md:p-12 md:px-16 lg:p-16 lg:px-24 dark:text-gray-700">
       <div className="flex flex-col h-full w-full bg-[#C6E2EC] bg-opacity-40 backdrop-blur rounded-lg border-2 border-[#C6E2EC] p-4 space-y-4">
         <div className="flex space-x-2">
           <div className='aspect-square h-4 rounded-full bg-[#FF6565]'/>
@@ -82,7 +82,7 @@ const MainSection: FC<{
           <div className='aspect-square h-4 rounded-full bg-[#63FF55]'/>
         </div>
         <div className="overflow-y-scroll rounded-lg p-4 md:p-8 flex flex-col space-y-8">
-          <div className="aspect-square h-52 min-w-[50%] mx-auto bg-white bg-opacity-80 rounded-full overflow-hidden shrink-0">
+          <div className="aspect-square h-52 w-52 md:min-w-[50%] mx-auto bg-white bg-opacity-80 rounded-full overflow-hidden shrink-0">
             <img src="/img/blol-look-left.png" alt="my avatar"  className="object-cover h-full mx-auto"/>
           </div>
           <div className="p-4 flex flex-col">
@@ -156,13 +156,13 @@ const ToggleHeading: FC<{
   const [toggled, setToggled] = useState(false)
   const formatted = `{ ${text} }`
 
-  const handleToggle = () => {
+  const handleToggle: MouseEventHandler<HTMLButtonElement> = (e) => {
     setToggled(!toggled)
   }
 
   return (
     <div>
-      <button onClick={() => handleToggle()} className="text-2xl font-poppins font-bold flex items-center">
+      <button onClick={handleToggle} className="text-2xl font-poppins font-bold flex items-center">
         {
           !toggled ? (
             <TriangleRight height="30px"/>
@@ -172,7 +172,7 @@ const ToggleHeading: FC<{
         }
         {formatted}
       </button>
-      <div className={clsx({'hidden': !toggled, 'visible': toggled })}>
+      <div className={clsx('transition ease-in-out delay-150', {'hidden': !toggled, 'visible': toggled })}>
         { children }
       </div>
     </div>

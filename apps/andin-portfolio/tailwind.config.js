@@ -13,6 +13,9 @@ module.exports = {
       fontFamily: {
         poppins: ["Poppins"],
         raleway: ['Raleway']
+      },
+      transitionProperty: {
+        'height': 'height'
       }
     },
   },
