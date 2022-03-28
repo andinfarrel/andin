@@ -1,12 +1,12 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import { FC, useEffect } from 'react'
+import { FC, useState } from 'react'
 import clsx from 'clsx'
-import { useRouter } from 'next/router'
-
 import { airtable, getMinifiedRecords } from 'app/services/airtable'
 import { GetStaticProps } from 'next'
 import { useTheme } from 'app/providers/ThemeProvider'
+import TriangleRight  from 'public/shapes/triangle-right-svgrepo-com.svg'
+import TriangleDown  from 'public/shapes/triangle-down-svgrepo-com.svg'
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
   const skillsTable = airtable('Skills');
@@ -67,49 +67,52 @@ const MainSection: FC<{
     <section className="h-screen p-8 py-12 md:p-12 md:px-16 lg:p-16 lg:px-24 dark:text-gray-700">
       <div className="flex flex-col h-full w-full bg-[#C6E2EC] bg-opacity-40 backdrop-blur rounded-lg border-2 border-[#C6E2EC] p-4 space-y-4">
         <div className="flex space-x-2">
-          <div className='aspect-square h-4 rounded-full bg-[#FF6565]'></div>
-          <div className='aspect-square h-4 rounded-full bg-[#FFF16F]'></div>
-          <div className='aspect-square h-4 rounded-full bg-[#63FF55]'></div>
+          <div className='aspect-square h-4 rounded-full bg-[#FF6565]'/>
+          <div className='aspect-square h-4 rounded-full bg-[#FFF16F]'/>
+          <div className='aspect-square h-4 rounded-full bg-[#63FF55]'/>
         </div>
         <div className="overflow-y-scroll grid grid-flow-row  rounded-lg p-4 md:p-8">
           <div className="z-0 flex flex-col">
-            <SubSectionTitle text="skills"/>
-            <div className="w-full py-12 grid auto-rows-fr grid-cols-2 md:grid-cols-3 gap-4">
-              {
-                me.skills && me.skills.map((s, index) => (
-                  <MeItem key={index}>
-                    {s.fields.Name}
-                  </MeItem>
-                ))
-              }
-            </div>
+            <ToggleHeading text="skills">
+              <div className="w-full py-12 grid auto-rows-fr grid-cols-2 md:grid-cols-3 gap-4">
+                {
+                  me.skills && me.skills.map((s, index) => (
+                    <MeItem key={index}>
+                      <p className="text-center font-raleway my-auto">{s.fields.Name}</p>
+                    </MeItem>
+                  ))
+                }
+              </div>
+            </ToggleHeading>
           </div>
           <div className="z-0 flex flex-col">
-            <SubSectionTitle text="technologies"/>
-            <div className="w-full py-12 grid auto-rows-fr grid-cols-2 md:grid-cols-3 gap-4">
-              {
-                me.techs && me.techs.map((s, index) => (
-                  <MeItem key={index} className='space-y-4'>
-                    <div className='h-8'>
-                      <img className="object-contain h-full w-full" src={s.fields.Logo[0].url} alt={`tech I use: ${s.fields.Name}`}/>
-                    </div>
-                    {s.fields.Name}
-                  </MeItem>
-                ))
-              }
-            </div>
+            <ToggleHeading text="technologies">
+              <div className="w-full py-12 grid auto-rows-fr grid-cols-2 md:grid-cols-3 gap-4">
+                {
+                  me.techs && me.techs.map((s, index) => (
+                    <MeItem key={index} className='space-y-4'>
+                      <div className='h-8'>
+                        <img className="object-contain h-full w-full" src={s.fields.Logo[0].url} alt={`tech I use: ${s.fields.Name}`}/>
+                      </div>
+                      <p className="text-center font-raleway my-auto">{s.fields.Name}</p>
+                    </MeItem>
+                  ))
+                }
+              </div>
+            </ToggleHeading>
           </div>
           <div className="z-0 flex flex-col">
-            <SubSectionTitle text="interests"/>
-            <div className="w-full py-12 grid auto-rows-fr grid-cols-2 md:grid-cols-3 gap-4">
-              {
-                me.interests && me.interests.map((s, index) => (
-                  <MeItem key={index}>
-                    {s.fields.Name}
-                  </MeItem>
-                ))
-              }
-            </div>
+            <ToggleHeading text="interests">
+              <div className="w-full py-12 grid auto-rows-fr grid-cols-2 md:grid-cols-3 gap-4">
+                {
+                  me.interests && me.interests.map((s, index) => (
+                    <MeItem key={index}>
+                      <p className="text-center font-raleway my-auto">{s.fields.Name}</p>
+                    </MeItem>
+                  ))
+                }
+              </div>
+            </ToggleHeading>
           </div>
         </div>
       </div>
@@ -122,7 +125,39 @@ const MeItem: FC<{
 }> = ({ className, children }) => {
   return (
     <div className={clsx("p-2 md:py-4 bg-white bg-opacity-50 rounded-lg flex flex-col", className)}>
-      <p  className="text-center font-raleway my-auto">{ children }</p>
+      { children }
+    </div>
+  )
+}
+
+const ToggleHeading: FC<{
+  text: string
+}> = ({
+  text,
+  children
+}) => {
+  const [toggled, setToggled] = useState(false)
+  const formatted = `{ ${text} }`
+
+  const handleToggle = () => {
+    setToggled(!toggled)
+  }
+
+  return (
+    <div>
+      <button onClick={() => handleToggle()} className="text-2xl font-poppins font-bold flex items-center">
+        {
+          !toggled ? (
+            <TriangleRight height="30px"/>
+          ) : (
+            <TriangleDown height="30px"/>
+          )
+        }
+        {formatted}
+      </button>
+      <div className={clsx({'hidden': !toggled, 'visible': toggled })}>
+        { children }
+      </div>
     </div>
   )
 }
