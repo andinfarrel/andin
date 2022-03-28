@@ -7,6 +7,7 @@ import { GetStaticProps } from 'next'
 import { useTheme } from 'app/providers/ThemeProvider'
 import TriangleRight  from 'public/shapes/triangle-right-svgrepo-com.svg'
 import TriangleDown  from 'public/shapes/triangle-down-svgrepo-com.svg'
+import Blol from 'public/avatars/blol.svg'
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
   const skillsTable = airtable('Skills');
@@ -71,7 +72,14 @@ const MainSection: FC<{
           <div className='aspect-square h-4 rounded-full bg-[#FFF16F]'/>
           <div className='aspect-square h-4 rounded-full bg-[#63FF55]'/>
         </div>
-        <div className="overflow-y-scroll grid grid-flow-row  rounded-lg p-4 md:p-8">
+        <div className="overflow-y-scroll rounded-lg p-4 md:p-8 flex flex-col space-y-8">
+          <div className="aspect-square h-52 min-w-[50%] mx-auto bg-white bg-opacity-80 rounded-full overflow-hidden shrink-0">
+            <img src="/img/blol-look-left.png" alt="my avatar"  className="object-cover h-full mx-auto"/>
+          </div>
+          <div className="p-4 flex flex-col">
+            <p className="font-poppins font-semibold text-2xl">Hi! I'm Andin, </p>
+            <p className="font-poppins text-2xl">A full stack web developer based in United Kingdom</p>
+          </div>
           <div className="z-0 flex flex-col">
             <ToggleHeading text="skills">
               <div className="w-full py-12 grid auto-rows-fr grid-cols-2 md:grid-cols-3 gap-4">
