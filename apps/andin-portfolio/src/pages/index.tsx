@@ -62,7 +62,9 @@ const Home: FC<{
           </div>
         </section>
 
-      <MainSection me={me} />
+        <MainSection me={me} />
+        <ShowcaseSection />
+        <ContactSection />
       </div>
     </>
   )
@@ -179,16 +181,42 @@ const ToggleHeading: FC<{
   )
 }
 
-const SubSectionTitle: FC<{
-  text: string
-}> = ({
-  text
-}) => {
-  const formatted = `{ ${text} }`
+// const 
+
+const ShowcaseSection: FC = () => {
   return (
-    <p className="text-2xl font-poppins font-bold">{formatted}</p>
+    <section className="min-h-screen">
+      <div className="min-h-screen md:h-screen flex flex-col md:flex-row-reverse md:justify-around"> 
+        <div className="my-auto mx-auto flex flex-col p-14 space-y-8 md:mr-auto">
+          <div className="font-poppins font-bold text-4xl">
+            <p>Project Showcase</p>
+            <p className="italic ">Ngopi UK</p>
+          </div>
+          <div className="font-raleway font-semibold text-xl">
+            <p>UK Based authentic Indonesian coffee shops and roaster</p>
+          </div>
+          <div className="flex flex-col font-poppins font-semibold">
+            <a className="text-[#006d77] hover:text-[#83C5BE] italic" href="https://www.ngopi.co.uk" target="_blank" referrerPolicy="no-referrer">Online shop</a>
+            <a className="text-[#006d77] hover:text-[#83C5BE] italic" href="https://www.menu.ngopi.co.uk" target="_blank" referrerPolicy="no-referrer">Online Menu</a>
+            <p>Read more about it here:</p>
+          </div>
+        </div>
+        <div className="flex md:ml-auto">
+          <img className="object-contain h-full w-auto" src="/img/mockups/ngopi-mockup.png" alt="" />
+        </div>
+      </div>
+    </section>
   )
 }
 
+const ContactSection: FC = () => {
+  return (
+    <section className="h-56 flex">
+      <div className="mx-auto my-auto">
+        <a className="bg-[#006d77] p-4 rounded-md font-raleway text-xl font-bold text-white" href="https://airtable.com/shrU1dWowu9TJbxVV" referrerPolicy="no-referrer" target="_blank">Contact Me</a>
+      </div>
+    </section>
+  )
+}
 
 export default Home
