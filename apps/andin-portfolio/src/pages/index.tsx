@@ -41,21 +41,30 @@ const Home: FC<{
 }> = ({ me }) => {
   const { activeTheme, setActiveTheme } = useTheme()
   return (
-    <div className="min-h-screen bg-[#EDF6F9] dark:bg-[#006D77] bg-main bg-fixed bg-cover bg-left-top dark:text-white flex flex-col">
-      <button onClick={() => activeTheme === 'light' ? setActiveTheme('dark') : setActiveTheme('light')}  className="ml-auto p-3 m-4 bg-black dark:bg-white dark:text-black rounded-md text-white text-sm">Toggle Theme</button>
-      <section className="h-[70vh] flex flex-col place-content-center pl-8 md:pl-24">
-        <div className="translate-y-10">
-          <p className="font-poppins font-bold text-6xl md:text-7xl">
-            Andin Farrel
-          </p>
-          <p className="font-raleway font-semibold text-2xl lg:text-3xl">
-            I build <span className="text-[#006D77] dark:text-[#83c5be] hover:underline underline-offset-4 hover:cursor-default">solutions</span> to your <span className="hover:underline underline-offset-4 hover:cursor-default text-red-600 dark:text-red-300">problems</span>
-          </p>
-        </div>
-      </section>
+    <>
+      <Head>
+        <title>🙋🏻‍♂️ Hi!, I'm Andin</title>
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"/>
+        <link rel="manifest" href="/site.webmanifest"/>
+      </Head>
+      <div className="min-h-screen bg-[#EDF6F9] dark:bg-[#006D77] bg-main bg-fixed bg-cover bg-left-top dark:text-white flex flex-col">
+        <button onClick={() => activeTheme === 'light' ? setActiveTheme('dark') : setActiveTheme('light')}  className="ml-auto p-3 m-4 bg-black dark:bg-white dark:text-black rounded-md text-white text-sm">Toggle Theme</button>
+        <section className="h-[70vh] flex flex-col place-content-center pl-8 md:pl-24">
+          <div className="translate-y-10">
+            <p className="font-poppins font-bold text-6xl md:text-7xl">
+              Andin Farrel
+            </p>
+            <p className="font-raleway font-semibold text-2xl lg:text-3xl">
+              I build <span className="text-[#006D77] dark:text-[#83c5be] hover:underline underline-offset-4 hover:cursor-default">solutions</span> to your <span className="hover:underline underline-offset-4 hover:cursor-default text-red-600 dark:text-red-300">problems</span>
+            </p>
+          </div>
+        </section>
 
-     <MainSection me={me} />
-    </div>
+      <MainSection me={me} />
+      </div>
+    </>
   )
 }
 
