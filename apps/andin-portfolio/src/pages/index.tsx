@@ -78,7 +78,7 @@ const MainSection: FC<{
               {
                 me.skills && me.skills.map((s, index) => (
                   <MeItem key={index}>
-                  {s.fields.Name}
+                    {s.fields.Name}
                   </MeItem>
                 ))
               }
@@ -89,8 +89,11 @@ const MainSection: FC<{
             <div className="w-full py-12 grid auto-rows-fr grid-cols-2 md:grid-cols-3 gap-4">
               {
                 me.techs && me.techs.map((s, index) => (
-                  <MeItem key={index}>
-                  {s.fields.Name}
+                  <MeItem key={index} className='space-y-4'>
+                    <div className='h-8'>
+                      <img className="object-contain h-full w-full" src={s.fields.Logo[0].url} alt={`tech I use: ${s.fields.Name}`}/>
+                    </div>
+                    {s.fields.Name}
                   </MeItem>
                 ))
               }
@@ -114,9 +117,11 @@ const MainSection: FC<{
   )
 }
 
-const MeItem: FC = ({ children }) => {
+const MeItem: FC<{
+  className?: string
+}> = ({ className, children }) => {
   return (
-    <div className="p-2 md:py-4 bg-white bg-opacity-50 flex flex-col  rounded-lg ">
+    <div className={clsx("p-2 md:py-4 bg-white bg-opacity-50 rounded-lg flex flex-col", className)}>
       <p  className="text-center font-raleway my-auto">{ children }</p>
     </div>
   )
