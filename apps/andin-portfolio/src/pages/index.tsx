@@ -6,6 +6,7 @@ import { useRouter } from 'next/router'
 
 import { airtable, getMinifiedRecords } from 'app/services/airtable'
 import { GetStaticProps } from 'next'
+import { useTheme } from 'app/providers/ThemeProvider'
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
   const skillsTable = airtable('Skills');
@@ -37,15 +38,17 @@ interface AboutMe {
 const Home: FC<{
   me: AboutMe
 }> = ({ me }) => {
+  const { activeTheme, setActiveTheme } = useTheme()
   return (
-    <div className="min-h-screen">
-      <section className="h-[80vh] flex flex-col place-content-center pl-8 md:pl-24">
-        <div className="translate-y-20">
+    <div className="min-h-screen bg-[#EDF6F9] dark:bg-[#006D77] bg-main bg-fixed bg-cover bg-left-top dark:text-white flex flex-col">
+      <button onClick={() => activeTheme === 'light' ? setActiveTheme('dark') : setActiveTheme('light')}  className="ml-auto p-3 m-4 bg-black dark:bg-white dark:text-black rounded-md text-white text-sm">Toggle Theme</button>
+      <section className="h-[70vh] flex flex-col place-content-center pl-8 md:pl-24">
+        <div className="translate-y-10">
           <p className="font-poppins font-bold text-6xl md:text-7xl">
             Andin Farrel
           </p>
           <p className="font-raleway font-semibold text-2xl lg:text-3xl">
-            I build <span className="text-[#006D77] hover:underline underline-offset-4 hover:cursor-default">solutions</span> to your <span className="hover:underline underline-offset-4 hover:cursor-default text-red-600">problems</span>
+            I build <span className="text-[#006D77] dark:text-[#83c5be] hover:underline underline-offset-4 hover:cursor-default">solutions</span> to your <span className="hover:underline underline-offset-4 hover:cursor-default text-red-600 dark:text-red-300">problems</span>
           </p>
         </div>
       </section>
@@ -61,7 +64,7 @@ const MainSection: FC<{
   me
 }) => {
   return (
-    <section className="h-screen p-8 py-12 md:p-12 md:px-16 lg:p-16 lg:px-24">
+    <section className="h-screen p-8 py-12 md:p-12 md:px-16 lg:p-16 lg:px-24 dark:text-gray-700">
       <div className="flex flex-col h-full w-full bg-[#C6E2EC] bg-opacity-40 backdrop-blur rounded-lg border-2 border-[#C6E2EC] p-4 space-y-4">
         <div className="flex space-x-2">
           <div className='aspect-square h-4 rounded-full bg-[#FF6565]'></div>

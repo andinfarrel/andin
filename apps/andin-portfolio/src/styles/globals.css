@@ -14,10 +14,3 @@
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 }
-
-html {
-  @apply bg-[#EDF6F9];
-}
-body {
-  @apply bg-main bg-fixed bg-cover bg-left-top; 
-}
