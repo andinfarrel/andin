@@ -198,7 +198,7 @@ const ShowcaseSection: FC = () => {
           <div className="flex flex-col font-poppins font-semibold">
             <a className="text-[#006d77] hover:text-[#83C5BE] italic" href="https://www.ngopi.co.uk" target="_blank" referrerPolicy="no-referrer">Online shop</a>
             <a className="text-[#006d77] hover:text-[#83C5BE] italic" href="https://menu.ngopi.co.uk" target="_blank" referrerPolicy="no-referrer">Online Menu</a>
-            <p>Read more about it here:</p>
+            {/* <p>Read more about it here:</p> */}
           </div>
         </div>
         <div className="flex md:ml-auto">
@@ -213,7 +213,7 @@ const ContactSection: FC = () => {
   return (
     <section className="h-56 flex">
       <div className="mx-auto my-auto">
-        <a className="bg-[#006d77] p-4 rounded-md font-raleway text-xl font-bold text-white" href="https://airtable.com/shrU1dWowu9TJbxVV" referrerPolicy="no-referrer" target="_blank">Contact Me</a>
+        Would like to chat? <a className="font-raleway font-bold italic hover:underline underline-offset-4" href="https://airtable.com/shrU1dWowu9TJbxVV" referrerPolicy="no-referrer" target="_blank">Contact me</a>
       </div>
     </section>
   )
