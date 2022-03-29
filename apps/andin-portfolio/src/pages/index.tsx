@@ -197,7 +197,7 @@ const ShowcaseSection: FC = () => {
           </div>
           <div className="flex flex-col font-poppins font-semibold">
             <a className="text-[#006d77] hover:text-[#83C5BE] italic" href="https://www.ngopi.co.uk" target="_blank" referrerPolicy="no-referrer">Online shop</a>
-            <a className="text-[#006d77] hover:text-[#83C5BE] italic" href="https://www.menu.ngopi.co.uk" target="_blank" referrerPolicy="no-referrer">Online Menu</a>
+            <a className="text-[#006d77] hover:text-[#83C5BE] italic" href="https://menu.ngopi.co.uk" target="_blank" referrerPolicy="no-referrer">Online Menu</a>
             <p>Read more about it here:</p>
           </div>
         </div>
