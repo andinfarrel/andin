@@ -57,7 +57,7 @@ const Home: FC<{
               Andin Farrel
             </p>
             <p className="font-raleway font-semibold text-2xl lg:text-3xl">
-              I build <span className="text-[#006D77] dark:text-[#83c5be] hover:underline underline-offset-4 hover:cursor-default">solutions</span> to your <span className="hover:underline underline-offset-4 hover:cursor-default text-red-600 dark:text-red-300">problems</span>
+              I build <span className="text-[#006D77] dark:text-[#83c5be] hover:underline underline-offset-4 hover:cursor-default">solutions</span> for your <span className="hover:underline underline-offset-4 hover:cursor-default text-red-600 dark:text-red-300">problems</span>
             </p>
           </div>
         </section>
