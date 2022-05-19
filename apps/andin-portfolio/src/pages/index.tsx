@@ -30,7 +30,6 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
 const Home: FC<{
   me: AboutMeProps
 }> = ({ me }) => {
-  const { activeTheme, setActiveTheme } = useTheme()
 
   return (
     <>
@@ -42,7 +41,6 @@ const Home: FC<{
         <link rel="manifest" href="/site.webmanifest"/>
       </Head>
       <div className="min-h-screen bg-[#EDF6F9] dark:bg-[#006D77] bg-main bg-fixed bg-cover bg-left-top dark:text-white flex flex-col">
-        <button onClick={() => activeTheme === 'light' ? setActiveTheme('dark') : setActiveTheme('light')}  className="ml-auto p-3 m-4 bg-black dark:bg-white dark:text-black rounded-md text-white text-sm">Toggle Theme</button>
         <Hero />
         <AboutMe me={me} />
         <Showcase />

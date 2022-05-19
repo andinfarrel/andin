@@ -17,7 +17,7 @@ const ToggleHeading: FC<{
 
     return (
       <div>
-        <button onClick={() => toggle()} className={"font-poppins font-bold flex items-center"}>
+        <button onClick={() => toggle()} className={"flex items-center"}>
           {
             !isToggled ? (
               <TriangleRight height="30px"/>
@@ -25,7 +25,7 @@ const ToggleHeading: FC<{
               <TriangleDown height="30px"/>
             )
           }
-          <p className={`text-${headingSize}`}>{headingText}</p>
+          <p className={`text-${headingSize} font-poppins font-bold`}>{headingText}</p>
         </button>
         <div className={clsx('transition ease-in-out delay-150', {'hidden': !isToggled, 'visible': isToggled })}>
           { children }
