@@ -9,11 +9,6 @@ export const ThemeContext = createContext<{
   setActiveTheme: React.Dispatch<React.SetStateAction<ThemeOption>>
 }>({} as any)
 
-export const useTheme = () => {
-  const themeContext = useContext(ThemeContext)
-  if (themeContext) return themeContext
-  else throw new Error("Can't set theme!")
-}
 
 export const ThemeProvider: FC = ({ children }) => {
   const [activeTheme, setActiveTheme] = useState<ThemeOption>(BasicThemeOptions[0])

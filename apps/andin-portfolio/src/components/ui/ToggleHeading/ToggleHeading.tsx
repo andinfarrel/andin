@@ -9,7 +9,7 @@ const ToggleHeading: FC<{
   headingSize?: "xs" | "sm" | "md" | "lg" | "xl" | "2xl"
   }> = ({
     text,
-    headingSize = "md",
+    headingSize = "2xl",
     children
   }) => {
     const {isToggled, toggle} = useToggle()
@@ -25,7 +25,7 @@ const ToggleHeading: FC<{
               <TriangleDown height="30px"/>
             )
           }
-          <p className={clsx("text-2xl", `text-${headingSize}`)}>{headingText}</p>
+          <p className={`text-${headingSize}`}>{headingText}</p>
         </button>
         <div className={clsx('transition ease-in-out delay-150', {'hidden': !isToggled, 'visible': isToggled })}>
           { children }
