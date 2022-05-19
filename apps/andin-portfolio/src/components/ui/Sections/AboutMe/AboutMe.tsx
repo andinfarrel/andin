@@ -1,8 +1,6 @@
 import Avatar from 'app/components/icons/Avatar'
 import { FC } from 'react'
-import Item from '../../Item'
-import ToggleHeading from '../../ToggleHeading'
-import Window from '../../Window'
+import { ToggleHeading, Window, Item } from 'app/components/ui'
 
 
 export interface AboutMeProps {
