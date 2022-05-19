@@ -13,8 +13,8 @@ const Showcase: FC = () => {
             <p>UK Based authentic Indonesian coffee shops and roaster</p>
           </div>
           <div className="flex flex-col font-poppins font-semibold">
-            <a className="text-[#006d77] hover:text-[#83C5BE] italic" href="https://ngopi-uk.vercel.app" target="_blank" referrerPolicy="no-referrer">Online shop</a>
-            <a className="text-[#006d77] hover:text-[#83C5BE] italic" href="https://menu.ngopi.co.uk" target="_blank" referrerPolicy="no-referrer">Online Menu</a>
+            <a className="text-[#006d77] dark:text-white hover:text-[#9eece4] hover:underline underline-offset-2" href="https://ngopi-uk.vercel.app" target="_blank" referrerPolicy="no-referrer">Online shop</a>
+            <a className="text-[#006d77] dark:text-white hover:text-[#9eece4] hover:underline underline-offset-2" href="https://menu.ngopi.co.uk" target="_blank" referrerPolicy="no-referrer">Online Menu</a>
             {/* <p>Read more about it here:</p> */}
           </div>
         </div>
