@@ -37,10 +37,6 @@ export const ThemeProvider: FC = ({ children }) => {
     localStorage.setItem("savedTheme", activeTheme)
   }, [activeTheme])
 
-
-  // const applyTheme = useCallback(() => {
-  // }, [activeTheme])
-
   return (
     <ThemeContext.Provider value={{
       activeTheme,

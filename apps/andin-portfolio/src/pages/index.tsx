@@ -5,9 +5,9 @@ import clsx from 'clsx'
 import { airtable, getMinifiedRecords } from 'app/services/airtable'
 import { GetStaticProps } from 'next'
 import { useTheme } from 'app/providers/ThemeProvider'
-import TriangleRight  from 'public/shapes/triangle-right-svgrepo-com.svg'
-import TriangleDown  from 'public/shapes/triangle-down-svgrepo-com.svg'
-import Blol from 'public/avatars/blol.svg'
+import Window from 'app/components/ui/Window'
+import ToggleHeading from 'app/components/ui/ToggleHeading'
+import Item from 'app/components/ui/Item'
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
   const skillsTable = airtable('Skills');
@@ -40,10 +40,11 @@ const Home: FC<{
   me: AboutMe
 }> = ({ me }) => {
   const { activeTheme, setActiveTheme } = useTheme()
+
   return (
     <>
       <Head>
-        <title>🙋🏻‍♂️ Hi!, I'm Andin</title>
+        <title>🙋🏻‍♂️ Hi! I'm Andin</title>
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"/>
@@ -77,13 +78,7 @@ const MainSection: FC<{
 }) => {
   return (
     <section className="scroll-smooth h-screen p-8 py-12 md:p-12 md:px-16 lg:p-16 lg:px-24 dark:text-gray-700">
-      <div className="flex flex-col h-full w-full bg-[#C6E2EC] bg-opacity-40 backdrop-blur rounded-lg border-2 border-[#C6E2EC] p-4 space-y-4">
-        <div className="flex space-x-2">
-          <div className='aspect-square h-4 rounded-full bg-[#FF6565]'/>
-          <div className='aspect-square h-4 rounded-full bg-[#FFF16F]'/>
-          <div className='aspect-square h-4 rounded-full bg-[#63FF55]'/>
-        </div>
-        <div className="overflow-y-scroll rounded-lg p-4 md:p-8 flex flex-col space-y-8">
+      <Window>
           <div className="aspect-square h-52 w-52 md:min-w-[50%] mx-auto bg-white bg-opacity-80 rounded-full overflow-hidden shrink-0">
             <img src="/img/blol-look-left.png" alt="my avatar"  className="object-cover h-full mx-auto"/>
           </div>
@@ -96,9 +91,9 @@ const MainSection: FC<{
               <div className="w-full py-12 grid auto-rows-fr grid-cols-2 md:grid-cols-3 gap-4">
                 {
                   me.skills && me.skills.map((s, index) => (
-                    <MeItem key={index}>
+                    <Item key={index}>
                       <p className="text-center font-raleway my-auto">{s.fields.Name}</p>
-                    </MeItem>
+                    </Item>
                   ))
                 }
               </div>
@@ -109,12 +104,12 @@ const MainSection: FC<{
               <div className="w-full py-12 grid auto-rows-fr grid-cols-2 md:grid-cols-3 gap-4">
                 {
                   me.techs && me.techs.map((s, index) => (
-                    <MeItem key={index} className='space-y-4'>
+                    <Item key={index} className='space-y-4'>
                       <div className='h-8'>
                         <img className="object-contain h-full w-full" src={s.fields.Logo[0].url} alt={`tech I use: ${s.fields.Name}`}/>
                       </div>
                       <p className="text-center font-raleway my-auto">{s.fields.Name}</p>
-                    </MeItem>
+                    </Item>
                   ))
                 }
               </div>
@@ -125,63 +120,20 @@ const MainSection: FC<{
               <div className="w-full py-12 grid auto-rows-fr grid-cols-2 md:grid-cols-3 gap-4">
                 {
                   me.interests && me.interests.map((s, index) => (
-                    <MeItem key={index}>
+                    <Item key={index}>
                       <p className="text-center font-raleway my-auto">{s.fields.Name}</p>
-                    </MeItem>
+                    </Item>
                   ))
                 }
               </div>
             </ToggleHeading>
           </div>
-        </div>
-      </div>
+      </Window>
     </section>
   )
 }
 
-const MeItem: FC<{
-  className?: string
-}> = ({ className, children }) => {
-  return (
-    <div className={clsx("p-2 md:py-4 bg-white bg-opacity-50 rounded-lg flex flex-col", className)}>
-      { children }
-    </div>
-  )
-}
 
-const ToggleHeading: FC<{
-  text: string
-}> = ({
-  text,
-  children
-}) => {
-  const [toggled, setToggled] = useState(false)
-  const formatted = `{ ${text} }`
-
-  const handleToggle: MouseEventHandler<HTMLButtonElement> = (e) => {
-    setToggled(!toggled)
-  }
-
-  return (
-    <div>
-      <button onClick={handleToggle} className="text-2xl font-poppins font-bold flex items-center">
-        {
-          !toggled ? (
-            <TriangleRight height="30px"/>
-          ) : (
-            <TriangleDown height="30px"/>
-          )
-        }
-        {formatted}
-      </button>
-      <div className={clsx('transition ease-in-out delay-150', {'hidden': !toggled, 'visible': toggled })}>
-        { children }
-      </div>
-    </div>
-  )
-}
-
-// const 
 
 const ShowcaseSection: FC = () => {
   return (
