@@ -30,7 +30,6 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
 const Home: FC<{
   me: AboutMeProps
 }> = ({ me }) => {
-
   return (
     <>
       <Head>

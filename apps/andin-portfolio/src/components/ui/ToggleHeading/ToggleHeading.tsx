@@ -1,8 +1,9 @@
 import useToggle from 'app/hooks/useToggle'
 import { FC } from 'react'
-import TriangleRight  from 'public/shapes/triangle-right-svgrepo-com.svg'
-import TriangleDown  from 'public/shapes/triangle-down-svgrepo-com.svg'
+// import TriangleRight  from 'public/shapes/triangle-right-svgrepo-com.svg'
+// import TriangleDown  from 'public/shapes/triangle-down-svgrepo-com.svg'
 import clsx from 'clsx'
+import { TriangleDown, TriangleRight } from 'app/components/icons'
 
 const ToggleHeading: FC<{
   text: string
@@ -20,9 +21,11 @@ const ToggleHeading: FC<{
         <button onClick={() => toggle()} className={"flex items-center"}>
           {
             !isToggled ? (
-              <TriangleRight height="30px"/>
+              <TriangleRight/>
+              // "Open"
             ) : (
-              <TriangleDown height="30px"/>
+              <TriangleDown/>
+              // "Close"
             )
           }
           <p className={`text-${headingSize} font-poppins font-bold`}>{headingText}</p>

@@ -1,9 +1,5 @@
 module.exports = {
-  extends: [
-    'next',
-    'next/core-web-vitals',
-    'standard-with-typescript'
-  ],
+  extends: ['next', 'next/core-web-vitals', 'standard-with-typescript', 'plugin:storybook/recommended'],
   rules: {
     'multiline-ternary': 'off',
     'block-spacing': 'off',
@@ -21,12 +17,16 @@ module.exports = {
     '@typescript-eslint/no-extraneous-class': 'off',
     '@typescript-eslint/no-floating-promises': 'off',
     '@typescript-eslint/no-var-requires': 'off',
-    '@typescript-eslint/no-unused-vars': [1, { 'args': 'none' }],
+    '@typescript-eslint/no-unused-vars': [1, {
+      'args': 'none'
+    }],
     '@typescript-eslint/require-await': 'off',
     '@typescript-eslint/restrict-template-expressions': 'off',
     '@typescript-eslint/strict-boolean-expressions': 'off',
     '@typescript-eslint/indent': 'off',
-    '@typescript-eslint/quotes': ['error', 'single', { 'allowTemplateLiterals': true }],
+    '@typescript-eslint/quotes': ['error', 'single', {
+      'allowTemplateLiterals': true
+    }],
     '@next/next/no-img-element': 'off',
     'react/display-name': 'off',
     'react/no-unescaped-entities': 'off',
@@ -39,4 +39,4 @@ module.exports = {
     tsconfigRootDir: __dirname,
     sourceType: 'module'
   }
-}
+};
