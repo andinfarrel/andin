@@ -45,6 +45,8 @@ const Hero: FC = () => (
       <Image
         src="/images/andin-weeb.jpeg"
         alt="Andin's profile picture, credit goes to https://picrew.me/image_maker/197705"
+        width={500}
+        height={500}
       />
     </div>
   </section>
