@@ -39,7 +39,7 @@ const Collab: FC = () => (
 );
 
 const Footer: FC = () => (
-  <footer className="block py-8 text-center">Andin Farrel &copy; 2022</footer>
+  <footer className="block py-8 text-center">Andin Farrel &copy; 2023</footer>
 );
 
 export default Home;
