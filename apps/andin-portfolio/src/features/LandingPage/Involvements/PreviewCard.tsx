@@ -37,7 +37,7 @@ const ExperienceCard: FC<{
         ) : (
           <Image
             className="rounded-lg"
-            layout="fill"
+            fill
             src={data.img}
             alt={data.company}
           />
