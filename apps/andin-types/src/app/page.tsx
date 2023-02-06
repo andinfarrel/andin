@@ -24,7 +24,7 @@ const PageHeader: FC = () => {
       </h1>
       <div className="w-fit">
         <Link target="_blank" href="https://www.andinfarrel.codes">
-          <div className="flex px-2 py-2 space-x-2 transition ease-in-out rounded-md shadow-inner hover:-translate-y-[0.125rem] hover:shadow-md hover:bg-slate-100 bg-slate-100 place-items-center">
+          <div className="flex px-2 py-2 space-x-2 transition ease-in-out rounded-md shadow-inner bg-slate-200 hover:-translate-y-[0.125rem] hover:shadow-none hover:bg-slate-200 place-items-center">
             <div className="w-10 h-10 overflow-hidden bg-white rounded-full">
               <Image
                 src="/images/andin-weeb.jpeg"
