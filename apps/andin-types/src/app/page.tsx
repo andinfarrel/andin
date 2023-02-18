@@ -1,3 +1,4 @@
+import { getItem } from "@/services/dynamo";
 import Image from "next/image";
 import Link from "next/link";
 import { FC } from "react";
@@ -7,6 +8,7 @@ export default function Home() {
     <main className="min-h-screen text-slate-800 bg-slate-100">
       <div className="p-6 mx-auto md:p-12 md:w-3/4 lg:w-2/3">
         <PageHeader />
+        {/* @ts-expect-error Server Component */}
         <BlogList />
       </div>
     </main>
@@ -47,30 +49,25 @@ const PageHeader: FC = () => {
   );
 };
 
-const BlogList: FC = () => {
+async function BlogList() {
+  const blogs = await getItem();
   return (
     <div className="flex flex-col sm:space-y-4">
-      <BlogPreview />
-      <BlogPreview />
-      <BlogPreview />
-      <BlogPreview />
-      <BlogPreview />
-      <BlogPreview />
+      {blogs?.map(({id, title, description}) => (
+        <BlogPreview key={id} title={title} description={description}/>
+      ))}
     </div>
   );
-};
+}
 
-const BlogPreview: FC = () => {
+const BlogPreview: FC<{
+  title: string;
+  description: string;
+}> = ({ title, description }) => {
   return (
     <div className="transition ease-in-out hover:-translate-y-[0.125rem] flex flex-col p-4 space-y-1 rounded-md hover:shadow-inner hover:cursor-pointer hover:bg-slate-50 bg-opacity-5 sm:space-y-2">
-      <h2 className="text-2xl font-semibold sm:text-4xl">Blog title</h2>
-      <p className="text-sm sm:text-md line-clamp-3">
-        short example of content that will get trimmed here. short example of
-        content that will get trimmed here. short example of content that will
-        get trimmed here. short example of content that will get trimmed here.
-        short example of content that will get trimmed here. short example of
-        content that will get trimmed here
-      </p>
+      <h2 className="text-2xl font-semibold sm:text-4xl">{title}</h2>
+      <p className="text-sm sm:text-md line-clamp-3">{description}</p>
     </div>
   );
 };
