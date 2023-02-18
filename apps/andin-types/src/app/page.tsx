@@ -43,8 +43,8 @@ const PageHeader: FC = () => {
       </h3>
       <div className="w-fit">
         <Link target="_blank" href="https://www.andinfarrel.codes">
-          <div className="flex px-2 py-2 space-x-2 transition ease-in-out rounded-md shadow-sm bg-slate-100 hover:-translate-y-[0.125rem] hover:shadow-lg hover:bg-slate-50 place-items-center">
-            <div className="w-10 h-10 overflow-hidden bg-white rounded-full">
+          <div className="flex px-2 py-2 space-x-2 transition ease-in-out rounded-md bg-slate-100 shadow-md hover:-translate-y-[0.125rem] hover:bg-slate-50 place-items-center">
+            <div className="w-10 h-10 overflow-hidden rounded-full">
               <Image
                 src="/images/andin-weeb.jpeg"
                 alt="Andin's profile picture, credit goes to https://picrew.me/image_maker/197705"
@@ -87,7 +87,7 @@ const BlogPreview: FC<{
   description: string;
 }> = ({ title, description }) => {
   return (
-    <div className="transition ease-in-out hover:-translate-y-[0.125rem] flex flex-col p-4 space-y-1 rounded-md shadow-md hover:shadow-lg hover:cursor-pointer hover:bg-slate-50 bg-opacity-5 sm:space-y-2">
+    <div className="transition ease-in-out hover:-translate-y-[0.125rem] flex flex-col p-4 space-y-1 rounded-md shadow-md  hover:cursor-pointer bg-slate-100 hover:bg-slate-50 sm:space-y-2">
       <h2 className="text-2xl font-semibold sm:text-4xl">{title}</h2>
       <p className="text-sm sm:text-md line-clamp-3">{description}</p>
     </div>
