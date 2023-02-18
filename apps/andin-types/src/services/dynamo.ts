@@ -7,9 +7,12 @@ export const blogParams = {
   TableName: "blog",
 };
 
-export const getItem = async () => {
-  try {
-    const data = await dynamo.send(new ScanCommand(blogParams));
-    return data.Items;
-  } catch (err) {}
+
+export interface BlogItems {
+  items: Record<string, any>[];
+}
+
+export const getItems = async () => {
+  const data = await dynamo.send(new ScanCommand(blogParams));
+  return data.Items;
 };
