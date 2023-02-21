@@ -1,11 +1,15 @@
-import { BlogPost } from "@/services/blog";
+import { getPost, getPosts } from "@/services/blog";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
-async function getPost(postId: string) {
-  const data = await fetch(`${process.env.BASE_URL}/api/blogs/${postId}`);
-  if (!data.ok) return;
-  return data.json() as Promise<BlogPost>;
+export async function generateStaticParams() {
+  const posts = await getPosts();
+
+  return (
+    posts?.map((post) => ({
+      postId: post.id,
+    })) ?? []
+  );
 }
 
 export default async function Blog({ params }: { params: { postId: string } }) {
@@ -19,7 +23,9 @@ export default async function Blog({ params }: { params: { postId: string } }) {
       </div>
 
       <Link href="/">
-        <p className="italic hover:underline underline-offset-4 text-slate-600">← back</p>
+        <p className="italic hover:underline underline-offset-4 text-slate-600">
+          ← back
+        </p>
       </Link>
     </main>
   );

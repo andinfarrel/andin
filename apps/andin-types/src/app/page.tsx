@@ -1,20 +1,17 @@
-import { BlogPost } from "@/services/blog";
+import { BlogPost, getPosts } from "@/services/blog";
+import { redirect } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { FC } from "react";
 
-async function getPosts() {
-  const data = await fetch(`${process.env.BASE_URL}/api/blogs/fetchAll`);
-  return data.json() as Promise<{ items: BlogPost[] }>;
-}
-
 export default async function Home() {
-  const data = await getPosts();
+  const blogs = await getPosts();
+  if (!blogs) redirect("/");
 
   return (
     <>
       <PageHeader />
-      <Blogs blogs={data.items} />
+      <Blogs blogs={blogs} />
     </>
   );
 }

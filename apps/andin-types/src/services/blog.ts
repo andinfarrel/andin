@@ -33,7 +33,6 @@ export async function getPost(id: string): Promise<BlogPost | undefined> {
   });
 
   const item = data.Item ?? {};
-  console.log(item);
   return {
     id: item.id.S ?? "",
     content: item.content.S ?? "",
