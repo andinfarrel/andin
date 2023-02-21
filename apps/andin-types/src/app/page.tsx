@@ -2,7 +2,7 @@
 
 import Button from "@/components/ui/Button";
 import ThemeProvider, { ToggleTheme } from "@/components/ui/ThemeProvider";
-import { BlogItems, getItems } from "@/services/dynamo";
+import { BlogItems, getPosts } from "@/services/dynamo";
 import {
   QueryClient,
   QueryClientProvider,
