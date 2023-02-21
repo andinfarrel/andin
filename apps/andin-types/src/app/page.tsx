@@ -1,30 +1,21 @@
-"use client";
-
-import ThemeProvider, { ToggleTheme } from "@/components/ui/ThemeProvider";
-import { BlogItem } from "@/services/blog";
-import {
-  QueryClient,
-  QueryClientProvider,
-  useQuery,
-} from "@tanstack/react-query";
+import { BlogPost } from "@/services/blog";
 import Image from "next/image";
 import Link from "next/link";
 import { FC } from "react";
 
-const queryClient = new QueryClient();
+async function getPosts() {
+  const data = await fetch(`${process.env.BASE_URL}/api/blogs/fetchAll`);
+  return data.json() as Promise<{ items: BlogPost[] }>;
+}
 
-export default function Home() {
+export default async function Home() {
+  const data = await getPosts();
+
   return (
-    <QueryClientProvider client={queryClient}>
-      <ThemeProvider>
-        <div className="p-2">
-          <div className="p-6 mx-auto md:p-12 md:w-3/4 lg:w-2/3">
-            <PageHeader />
-            <BlogList />
-          </div>
-        </div>
-      </ThemeProvider>
-    </QueryClientProvider>
+    <>
+      <PageHeader />
+      <Blogs blogs={data.items} />
+    </>
   );
 }
 
@@ -62,33 +53,27 @@ const PageHeader: FC = () => {
   );
 };
 
-const BlogList: FC = () => {
-  const { data: blogs, isLoading } = useQuery<{items: BlogItem[]}>(
-    ["blog-posts"],
-    async () => {
-      const response = await fetch("api/blogs/fetchAll");
-      return (await response.json()) as { items: BlogItem[] };
-    }
-  );
-
+const Blogs: FC<{ blogs: BlogPost[] }> = ({ blogs }) => {
   return (
     <div className="flex flex-col sm:space-y-4">
-      {isLoading && <p>🐈</p>}
-      {blogs?.items.map(({ id, title, description }) => (
-        <BlogPreview key={id} title={title} description={description} />
+      {blogs?.map(({ id, title, description }) => (
+        <BlogPreview key={id} id={id} title={title} description={description} />
       ))}
     </div>
   );
 };
 
 const BlogPreview: FC<{
+  id: string;
   title: string;
   description: string;
-}> = ({ title, description }) => {
+}> = ({ id, title, description }) => {
   return (
-    <div className="transition ease-in-out hover:-translate-y-[0.125rem] flex flex-col p-4 space-y-1 rounded-md shadow-md  hover:cursor-pointer bg-slate-100 hover:bg-slate-50 sm:space-y-2">
-      <h2 className="text-2xl font-semibold sm:text-4xl">{title}</h2>
-      <p className="text-sm sm:text-md line-clamp-3">{description}</p>
-    </div>
+    <Link href={`/blogs/${id}`}>
+      <div className="transition ease-in-out hover:-translate-y-[0.125rem] flex flex-col p-4 space-y-1 rounded-md shadow-md  hover:cursor-pointer bg-slate-100 hover:bg-slate-50 sm:space-y-2">
+        <h2 className="text-2xl font-semibold sm:text-4xl">{title}</h2>
+        <p className="text-sm sm:text-md line-clamp-3">{description}</p>
+      </div>
+    </Link>
   );
 };

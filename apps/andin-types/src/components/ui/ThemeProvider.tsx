@@ -1,15 +1,6 @@
 "use client";
 
-import {
-  Dispatch,
-  FC,
-  ReactNode,
-  SetStateAction,
-  createContext,
-  useContext,
-  useRef,
-  useState,
-} from "react";
+import { FC, ReactNode, createContext, useContext, useState } from "react";
 import Button from "./Button";
 
 type Mode = "light" | "dark";
@@ -31,7 +22,9 @@ const ThemeProvider: FC<{ children: ReactNode }> = ({ children }) => {
     <ThemeContext.Provider value={{ mode, toggleMode }}>
       <div className={mode}>
         <main className="min-h-screen dark text-slate-800 bg-slate-200 dark:text-slate-50 dark:bg-slate-800">
-          {children}
+          <div className="p-8 mx-auto md:p-12 md:w-3/4 lg:w-2/3">
+            {children}
+          </div>
         </main>
       </div>
     </ThemeContext.Provider>
