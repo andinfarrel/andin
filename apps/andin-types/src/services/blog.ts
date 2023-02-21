@@ -1,3 +1,7 @@
+import {
+  GetItemCommand,
+  ScanCommand,
+} from "@aws-sdk/client-dynamodb";
 import { dynamo } from "./dynamo";
 
 export const blogParams = {
@@ -12,7 +16,7 @@ export type BlogPost = {
 };
 
 export async function getPosts(): Promise<BlogPost[] | undefined> {
-  const data = await dynamo.scan(blogParams);
+  const data = await dynamo.send(new ScanCommand(blogParams));
   return data.Items?.map((item) => {
     const blogPost: BlogPost = {
       id: item.id.S ?? "",
@@ -25,12 +29,14 @@ export async function getPosts(): Promise<BlogPost[] | undefined> {
 }
 
 export async function getPost(id: string): Promise<BlogPost | undefined> {
-  const data = await dynamo.getItem({
-    TableName: blogParams.TableName,
-    Key: {
-      id: { S: id },
-    },
-  });
+  const data = await dynamo.send(
+    new GetItemCommand({
+      TableName: blogParams.TableName,
+      Key: {
+        id: { S: id },
+      },
+    })
+  );
 
   const item = data.Item ?? {};
   return {

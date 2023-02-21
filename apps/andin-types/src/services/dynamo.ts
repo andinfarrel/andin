@@ -1,3 +1,3 @@
-import { DynamoDB } from "@aws-sdk/client-dynamodb";
+import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
 
-export const dynamo = new DynamoDB({ region: "eu-west-2" });
+export const dynamo = new DynamoDBClient({ region: "eu-west-2" });
