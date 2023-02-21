@@ -1,8 +1,7 @@
 "use client";
 
-import Button from "@/components/ui/Button";
 import ThemeProvider, { ToggleTheme } from "@/components/ui/ThemeProvider";
-import { BlogItems, getPosts } from "@/services/dynamo";
+import { BlogItem } from "@/services/blog";
 import {
   QueryClient,
   QueryClientProvider,
@@ -64,11 +63,11 @@ const PageHeader: FC = () => {
 };
 
 const BlogList: FC = () => {
-  const { data: blogs, isLoading } = useQuery<BlogItems>(
+  const { data: blogs, isLoading } = useQuery<{items: BlogItem[]}>(
     ["blog-posts"],
     async () => {
       const response = await fetch("api/blogs/fetchAll");
-      return (await response.json()) as BlogItems;
+      return (await response.json()) as { items: BlogItem[] };
     }
   );
 
