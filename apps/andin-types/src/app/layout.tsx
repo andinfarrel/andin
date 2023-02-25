@@ -1,4 +1,4 @@
-import Theme from "@/components/ui/ThemeProvider";
+import Theme from "@/components/ui/Theme";
 import "./globals.css";
 
 export default function RootLayout({
