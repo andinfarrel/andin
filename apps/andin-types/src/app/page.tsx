@@ -52,7 +52,7 @@ const PageHeader: FC = () => {
 
 const Blogs: FC<{ blogs: BlogPost[] }> = ({ blogs }) => {
   return (
-    <div className="flex flex-col sm:space-y-4">
+    <div className="flex flex-col pt-4 sm:space-y-4">
       {blogs?.map(({ id, title, description }) => (
         <BlogPreview key={id} id={id} title={title} description={description} />
       ))}
