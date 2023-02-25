@@ -20,14 +20,11 @@
     "next": "13.1.6",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "typescript": "4.9.5",
-    "aws-crt": "^1.15.9"
+    "typescript": "4.9.5"
   },
   "devDependencies": {
     "@aws-sdk/client-dynamodb": "^3.272.0",
-    "@aws-sdk/lib-dynamodb": "^3.272.0",
     "autoprefixer": "^10.4.13",
-    "aws-sdk": "^2.1318.0",
     "postcss": "^8.4.21",
     "tailwind-config": "*",
     "tailwindcss": "^3.2.4"
