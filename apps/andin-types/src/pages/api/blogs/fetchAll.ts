@@ -1,4 +1,4 @@
-import { BlogPost, getPosts } from "@/services/blog";
+import { BlogPost, dynamoClient, getPosts } from "@/services/blog";
 import type { NextApiRequest, NextApiResponse } from "next";
 
 export default async function handler(
@@ -7,6 +7,6 @@ export default async function handler(
     items: BlogPost[];
   }>
 ) {
-  const items = await getPosts();
+  const items = await getPosts(dynamoClient());
   if (items) res.status(200).json({ items });
 }
