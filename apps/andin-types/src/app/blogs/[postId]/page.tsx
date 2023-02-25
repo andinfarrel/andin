@@ -18,7 +18,7 @@ export default async function Blog({ params }: { params: { postId: string } }) {
   if (!blog) redirect("/");
 
   return (
-    <main className="flex flex-col p-8 space-y-8">
+    <div className="flex flex-col p-4 space-y-8">
       <div className="flex flex-col space-y-4">
         <h1 className="text-4xl font-bold">{blog.title}</h1>
         <h3 className="text-lg font-medium">{blog.description}</h3>
@@ -33,6 +33,6 @@ export default async function Blog({ params }: { params: { postId: string } }) {
           ← back
         </p>
       </Link>
-    </main>
+    </div>
   );
 }

@@ -8,7 +8,7 @@ const Theme: FC<{ children: ReactNode }> = ({ children }) => {
         <div className="absolute right-0 bg-red-200 rounded-full top-40 h-80 w-80 aspect-square mix-blend-multiply filter blur-xl animate-blob" />
         <div className="absolute top-0 bg-orange-200 rounded-full h-80 w-80 aspect-square mix-blend-multiply filter blur-xl animate-pulse" />
       </div>
-      <div className="relative z-10 w-full p-12 mx-auto md:p-12 lg:w-2/3">
+      <div className="relative z-10 w-full p-8 mx-auto lg:w-2/3">
         {children}
       </div>
     </main>
