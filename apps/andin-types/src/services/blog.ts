@@ -1,8 +1,8 @@
 import {
+  DynamoDBClient,
   GetItemCommand,
   ScanCommand,
 } from "@aws-sdk/client-dynamodb";
-import { dynamo } from "./dynamo";
 
 export const blogParams = {
   TableName: "blog",
@@ -15,7 +15,18 @@ export type BlogPost = {
   content: string;
 };
 
+export function dynamoClient() {
+  return new DynamoDBClient({
+    region: "eu-west-2",
+    credentials: {
+      accessKeyId: process.env.AWS_ACCESS_KEY_ID!,
+      secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY!,
+    },
+  });
+}
+
 export async function getPosts(): Promise<BlogPost[] | undefined> {
+  const dynamo = dynamoClient();
   const data = await dynamo.send(new ScanCommand(blogParams));
   return data.Items?.map((item) => {
     const blogPost: BlogPost = {
@@ -29,6 +40,7 @@ export async function getPosts(): Promise<BlogPost[] | undefined> {
 }
 
 export async function getPost(id: string): Promise<BlogPost | undefined> {
+  const dynamo = dynamoClient();
   const data = await dynamo.send(
     new GetItemCommand({
       TableName: blogParams.TableName,
