@@ -1,4 +1,4 @@
-import ThemeProvider from "@/components/ui/ThemeProvider";
+import Theme from "@/components/ui/ThemeProvider";
 import "./globals.css";
 
 export default function RootLayout({
@@ -14,7 +14,7 @@ export default function RootLayout({
       */}
       <head />
       <body>
-        <ThemeProvider>{children}</ThemeProvider>
+        <Theme>{children}</Theme>
       </body>
     </html>
   );

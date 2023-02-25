@@ -1,11 +1,11 @@
-import { BlogPost, getPosts } from "@/services/blog";
+import { BlogPost, dynamoClient, getPosts } from "@/services/blog";
 import { redirect } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { FC } from "react";
 
 export default async function Home() {
-  const blogs = await getPosts();
+  const blogs = await getPosts(dynamoClient());
   if (!blogs) redirect("/");
 
   return (

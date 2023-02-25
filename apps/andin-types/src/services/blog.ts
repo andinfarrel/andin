@@ -18,15 +18,12 @@ export type BlogPost = {
 export function dynamoClient() {
   return new DynamoDBClient({
     region: "eu-west-2",
-    credentials: {
-      accessKeyId: process.env.AWS_ACCESS_KEY_ID!,
-      secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY!,
-    },
   });
 }
 
-export async function getPosts(): Promise<BlogPost[] | undefined> {
-  const dynamo = dynamoClient();
+export async function getPosts(
+  dynamo: DynamoDBClient
+): Promise<BlogPost[] | undefined> {
   const data = await dynamo.send(new ScanCommand(blogParams));
   return data.Items?.map((item) => {
     const blogPost: BlogPost = {
@@ -39,8 +36,10 @@ export async function getPosts(): Promise<BlogPost[] | undefined> {
   });
 }
 
-export async function getPost(id: string): Promise<BlogPost | undefined> {
-  const dynamo = dynamoClient();
+export async function getPost(
+  dynamo: DynamoDBClient,
+  id: string
+): Promise<BlogPost | undefined> {
   const data = await dynamo.send(
     new GetItemCommand({
       TableName: blogParams.TableName,
