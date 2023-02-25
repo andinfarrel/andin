@@ -19,7 +19,7 @@ export default async function Home() {
 const PageHeader: FC = () => {
   return (
     <div
-      className="flex flex-col space-y-2 sm:space-y-4 sm:py-8"
+      className="flex flex-col space-y-2 sm:space-y-4"
       typeof="button"
     >
       <h1 className="text-4xl lg:text-7xl">
