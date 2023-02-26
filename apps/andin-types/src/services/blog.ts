@@ -15,14 +15,19 @@ export type BlogPost = {
   content: string;
 };
 
-export function dynamoClient() {
-  return new DynamoDBClient({
+let client: DynamoDBClient | undefined;
+
+export function getDynamoClient() {
+  if (client) return client;
+  client = new DynamoDBClient({
     region: "eu-west-2",
     credentials: {
       accessKeyId: process.env.AWS_ACCESS_KEY_ID!,
       secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY!,
     },
   });
+
+  return client;
 }
 
 export async function getPosts(

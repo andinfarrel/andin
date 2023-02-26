@@ -1,10 +1,9 @@
-import { dynamoClient, getPost, getPosts } from "@/services/blog";
+import { getDynamoClient, getPost, getPosts } from "@/services/blog";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
 export async function generateStaticParams() {
-  const posts = await getPosts(dynamoClient());
-
+  const posts = await getPosts(getDynamoClient());
   return (
     posts?.map((post) => ({
       postId: post.id,
@@ -14,7 +13,7 @@ export async function generateStaticParams() {
 
 export default async function Blog({ params }: { params: { postId: string } }) {
   const { postId } = params;
-  const blog = await getPost(dynamoClient(), postId);
+  const blog = await getPost(getDynamoClient(), postId);
   if (!blog) redirect("/");
 
   return (
