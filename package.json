@@ -7,14 +7,13 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "dotenv -- turbo run build",
+    "build": "turbo run build",
     "build:portfolio": "turbo run build --filter=andin-portfolio --include-dependencies --no-deps",
-    "dev": "dotenv -- turbo run dev --parallel",
+    "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
-    "dotenv-cli": "^7.0.0",
     "eslint-config": "*",
     "prettier": "^2.5.1",
     "turbo": "latest"
