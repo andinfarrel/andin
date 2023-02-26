@@ -1,11 +1,12 @@
-import { BlogPost, getDynamoClient, getPosts } from "@/services/blog";
+import { BlogPost } from "@/services/blog";
 import { redirect } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { FC } from "react";
+import { getPosts } from "@/pages/api/blogs/fetchAll";
 
 export default async function Home() {
-  const blogs = await getPosts(getDynamoClient());
+  const blogs = await getPosts();
   if (!blogs) redirect("/");
 
   return (
@@ -18,10 +19,7 @@ export default async function Home() {
 
 const PageHeader: FC = () => {
   return (
-    <div
-      className="flex flex-col space-y-2 sm:space-y-4"
-      typeof="button"
-    >
+    <div className="flex flex-col space-y-2 sm:space-y-4" typeof="button">
       <h1 className="text-4xl lg:text-7xl">
         <span className="font-bold">Types</span>
       </h1>
